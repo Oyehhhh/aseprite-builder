@@ -63,7 +63,7 @@ jobs:
           sudo apt-get install -y \
             libpixman-1-dev libfreetype6-dev libharfbuzz-dev zlib1g-dev \
             libx11-dev libxcursor-dev libxi-dev libxrandr-dev libgl1-mesa-dev \
-            libfontconfig1-dev
+            libfontconfig1-dev libzstd-dev libjitterentropy-dev
       - uses: actions/checkout@v4
       - name: Install Aseprite
         shell: bash
@@ -110,6 +110,7 @@ jobs:
             -DLAF_BACKEND=$laf_backend \
             -DSKIA_DIR=$(realpath skia) \
             -DENABLE_UNZIP=OFF \
+            -DCMAKE_EXE_LINKER_FLAGS="-lzstd -ljitterentropy" \
             -DSKIA_LIBRARY_DIR=$(realpath skia/out/Release-$skia_arch)
       - name: Compiling
         shell: bash
