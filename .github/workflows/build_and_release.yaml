@@ -73,16 +73,15 @@ jobs:
         working-directory: aseprite
         shell: bash
         run: |
-          if [[ "${{ runner.os }}" == "Windows" ]] ; then
-            curl -L -o Skia-Windows-Release-x64.zip https://github.com
-            unzip Skia-Windows-Release-x64.zip -d skia
-          elif [[ "${{ runner.os }}" == "macOS" ]] ; then
-            curl -L -o Skia-macOS-Release-arm64.zip https://github.com
-            unzip Skia-macOS-Release-arm64.zip -d skia
-          else
-            curl -L -o Skia-Linux-Release-x64.zip https://github.com
-            unzip Skia-Linux-Release-x64.zip -d skia
-          fi
+          DOMAIN="github.com"
+          USER="aseprite"
+          REPO="skia"
+          VER="m124-08a5439a6b"
+          FILE="Skia-Windows-Release-x64.zip"
+          curl -L -o skia.zip "https://$DOMAIN/$USER/$REPO/releases/download/$VER/$FILE"
+          unzip skia.zip -d skia
+
+
 
       - uses: aseprite/get-ninja@main
       - uses: ilammy/msvc-dev-cmd@v1
