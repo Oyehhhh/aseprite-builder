@@ -74,16 +74,16 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ runner.os }}" == "Windows" ]] ; then
-            choco install wget -y --no-progress
-            wget https://github.com
+            curl -L -o Skia-Windows-Release-x64.zip https://github.com
             unzip Skia-Windows-Release-x64.zip -d skia
           elif [[ "${{ runner.os }}" == "macOS" ]] ; then
-            wget https://github.com
+            curl -L -o Skia-macOS-Release-arm64.zip https://github.com
             unzip Skia-macOS-Release-arm64.zip -d skia
           else
-            wget https://github.com
+            curl -L -o Skia-Linux-Release-x64.zip https://github.com
             unzip Skia-Linux-Release-x64.zip -d skia
           fi
+
       - uses: aseprite/get-ninja@main
       - uses: ilammy/msvc-dev-cmd@v1
         if: runner.os == 'Windows'
