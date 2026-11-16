@@ -13,7 +13,7 @@ env:
 jobs:
   fetch-aseprite-info:
     name: Fetch deps info
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       download-link: ${{ steps.aseprite-link.outputs.download-link }}
       release-tag: ${{ steps.aseprite-link.outputs.release-tag }}
