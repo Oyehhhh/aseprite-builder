@@ -115,7 +115,7 @@ jobs:
         shell: bash
         working-directory: aseprite
         run: |
-          cd build && ninja
+          cd build && ninja aseprite
       - name: Clean Up Build folder
         working-directory: aseprite/build/bin
         shell: bash
